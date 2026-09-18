@@ -17,7 +17,7 @@ body {
 
 /* Контейнер обмежує ширину контенту на великих екранах */
 .container {
-    width: 90%;
+    width: 92%;
     max-width: 860px;
     margin: 0 auto;
 }
@@ -29,8 +29,20 @@ body {
 
 .header__inner {
     text-align: left;
-    padding: 40px 0 40px;
+    padding: clamp(28px, 6vw, 40px) 0;
     border-bottom: 1px solid #161616;
+}
+
+/* Обгортка верхньої панелі — закріплена вгорі під час прокрутки */
+.topnav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e4e2dd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 /* Верхня панель навігації */
@@ -39,7 +51,20 @@ body {
     align-items: center;
     gap: 24px;
     padding: 16px 0;
-    border-bottom: 1px solid #e4e2dd;
+}
+
+/* Обгортка "Всі товари" + пошук: у навбарі поводиться як прозорий контейнер,
+   а переміщена у шапку-хіро (на мобільних) — стає власним рядком */
+.nav-extras {
+    display: contents;
+}
+
+.nav-extras.in-hero {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
 }
 
 /* Логотип у навігації */
@@ -170,33 +195,33 @@ body {
 /* Заголовок у шапці */
 .header h1 {
     margin: 0 0 18px;
-    max-width: 12ch;
+    max-width: 16ch;
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
     font-weight: 400;
-    font-size: 38px;
+    font-size: clamp(26px, 4.2vw + 10px, 38px);
     line-height: 1.25;
     color: #161616;
 }
 
 /* Опис у шапці */
 .header__subtitle {
-    margin: 0 0 28px;
+    margin: 0;
     max-width: 46ch;
-    font-size: 16px;
+    font-size: clamp(14px, 1vw + 12px, 16px);
     color: #4a4a4a;
 }
 
 /* Основний блок сторінки */
 .main {
-    padding: 40px 0 20px;
+    padding: clamp(24px, 5vw, 40px) 0 20px;
 }
 
 /* Картка для окремих секцій */
 .card {
     background-color: #ffffff;
-    margin-bottom: 24px;
-    padding: 28px;
+    margin-bottom: clamp(16px, 3vw, 24px);
+    padding: clamp(18px, 3.5vw, 28px);
     border: 1px solid #e4e2dd;
 }
 
@@ -316,9 +341,17 @@ body {
     color: #161616;
 }
 
+/* Обгортка таблиці для горизонтальної прокрутки на вузьких екранах */
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 /* Таблиця зі стеком технологій */
 .tech-table {
     width: 100%;
+    min-width: 420px;
     border-collapse: collapse;
     margin-top: 15px;
 }
@@ -355,14 +388,15 @@ body {
     bottom: 20px;
     width: 48px;
     height: 48px;
-    background-color: #f5821f;
+    background-color: #161616;
     color: #ffffff;
     border: none;
     border-radius: 50%;
     font-size: 18px;
+    font-weight: 700;
     line-height: 1;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(245, 130, 31, 0.35);
+    box-shadow: 0 6px 16px rgb(161 161 161 / 0.35);
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
@@ -376,17 +410,40 @@ body {
 }
 
 .back-to-top:hover {
-    background-color: #d96f16;
+    background-color: #000000;
 }
 
 /*
-  Адаптивність для мобільних пристроїв.
-  Ці стилі застосовуються, якщо ширина екрана 600px або менше.
+  Адаптивність.
+  Три рівні, щоб перехід між десктопом, планшетом і смартфоном
+  був плавним, без різких "стрибків" верстки.
 */
+
+/* Планшети та вузькі ноутбуки */
+@media (max-width: 900px) {
+    .topnav {
+        gap: 14px;
+    }
+
+    .topnav__delivery {
+        display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+/* Смартфони */
 @media (max-width: 600px) {
     .topnav {
         flex-wrap: wrap;
-        gap: 12px;
+        row-gap: 10px;
+    }
+
+    .topnav__logo {
+        font-size: 20px;
     }
 
     .topnav__search {
@@ -394,35 +451,54 @@ body {
         flex: 1 1 100%;
     }
 
-    .topnav__delivery {
+    .topnav__cart-label {
         display: none;
     }
 
-    .header__inner {
-        padding: 28px 0 28px;
+    .card h2 {
+        font-size: 20px;
     }
 
     .header h1 {
-        font-size: 28px;
         max-width: 100%;
-    }
-
-    .header__subtitle {
-        font-size: 15px;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
     }
 
     .tech-table th,
     .tech-table td {
         font-size: 14px;
         padding: 8px;
+    }
+}
+
+/* Малі смартфони */
+@media (max-width: 420px) {
+    .topnav {
+        gap: 10px;
+    }
+
+    .topnav__catalog span {
+        display: none;
+    }
+
+    .topnav__cart {
+        padding: 8px 10px;
+    }
+
+    .topnav__cart-total {
+        padding-left: 6px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card__image {
+        height: 64px;
+        font-size: 26px;
     }
 }
