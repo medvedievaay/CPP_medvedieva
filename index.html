@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <!-- Встановлюємо кодування сторінки -->
+    <meta charset="UTF-8">
+
+    <!-- Налаштування кросплатформності для мобільних пристроїв -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Назва вкладки браузера -->
+    <title>August — кросплатформний застосунок супермаркету</title>
+
+    <!-- Шрифти -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Підключення зовнішнього CSS-файлу -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Хедер сайту -->
+<header class="header" id="top">
+    <!-- Верхня функціональна панель навігації -->
+    <div class="container topnav">
+        <a class="topnav__logo" href="#top">August</a>
+
+        <button class="topnav__catalog" id="catalogButton" type="button">
+            Всі товари <span aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="topnav__search">
+            <input type="text" id="searchInput" placeholder="Я шукаю…">
+        </div>
+
+        <div class="topnav__delivery">
+            <span class="topnav__delivery-title">Доставка</span>
+            <span class="topnav__delivery-subtitle">Вкажіть адресу доставки</span>
+        </div>
+
+        <button class="topnav__cart" id="cartButton" type="button">
+            <span class="topnav__cart-count" id="cartCount">0</span>
+            <span class="topnav__cart-label">Кошик</span>
+            <span class="topnav__cart-total" id="cartTotal">0 грн</span>
+        </button>
+    </div>
+
+    <!-- Смисловий заголовок сторінки -->
+    <div class="container header__inner">
+        <h1>Продукти щодня, без черг і зайвого клопоту</h1>
+        <p class="header__subtitle">
+            Кросплатформний застосунок супермаркету August — каталог,
+            замовлення з доставкою чи самовивозом та програма лояльності
+            в одному місці.
+        </p>
+    </div>
+</header>
+
+<!-- Основний вміст сторінки -->
+<main class="container main">
+    <!-- Секція з описом застосунку -->
+    <section class="card">
+        <h2>Про застосунок</h2>
+        <p>
+            August — це навчальний приклад кросплатформного застосунку
+            мережі супермаркетів, який працює у браузері на різних
+            пристроях: комп’ютерах, планшетах і смартфонах.
+        </p>
+
+        <p>
+            Для створення інтерфейсу використано HTML і CSS, а для взаємодії
+            з користувачем — JavaScript.
+        </p>
+    </section>
+
+    <!-- Секція з функціями застосунку -->
+    <section id="featuresSection" class="card">
+        <h2>Основні функції</h2>
+
+        <ul class="features-list">
+            <li>Перегляд каталогу товарів та актуальних цін</li>
+            <li>Онлайн-замовлення з доставкою або самовивозом</li>
+            <li>Програма лояльності та персональні знижки</li>
+            <li>Кошик покупок, який завжди під рукою</li>
+            <li>Робота у будь-якому сучасному браузері</li>
+        </ul>
+    </section>
+
+    <!-- Секція з каталогом товарів -->
+    <section id="catalogSection" class="card">
+        <h2>Каталог</h2>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Картка товару -->
+            <article class="product-card" data-name="Молоко 2.5%, 1 л" data-price="54.99">
+                <div class="product-card__image" aria-hidden="true">🥛</div>
+                <p class="product-card__price">54.99 грн</p>
+                <p class="product-card__name">Молоко 2.5%, 1 л</p>
+                <div class="product-card__action">
+                    <button class="product-card__add" type="button">Додати +</button>
+                </div>
+            </article>
+
+            <!-- Картка товару -->
+            <article class="product-card" data-name="Хліб пшеничний, 500 г" data-price="32.50">
+                <div class="product-card__image" aria-hidden="true">🍞</div>
+                <p class="product-card__price">32.50 грн</p>
+                <p class="product-card__name">Хліб пшеничний, 500 г</p>
+                <div class="product-card__action">
+                    <button class="product-card__add" type="button">Додати +</button>
+                </div>
+            </article>
+
+            <!-- Картка товару -->
+            <article class="product-card" data-name="Яйця курячі, 10 шт" data-price="68.00">
+                <div class="product-card__image" aria-hidden="true">🥚</div>
+                <p class="product-card__price">68.00 грн</p>
+                <p class="product-card__name">Яйця курячі, 10 шт</p>
+                <div class="product-card__action">
+                    <button class="product-card__add" type="button">Додати +</button>
+                </div>
+            </article>
+
+            <!-- Картка товару -->
+            <article class="product-card" data-name="Кава мелена, 250 г" data-price="149.99">
+                <div class="product-card__image" aria-hidden="true">☕</div>
+                <p class="product-card__price">149.99 грн</p>
+                <p class="product-card__name">Кава мелена, 250 г</p>
+                <div class="product-card__action">
+                    <button class="product-card__add" type="button">Додати +</button>
+                </div>
+            </article>
+
+            <!-- Картка товару -->
+            <article class="product-card" data-name="Сир твердий, 300 г" data-price="119.00">
+                <div class="product-card__image" aria-hidden="true">🧀</div>
+                <p class="product-card__price">119.00 грн</p>
+                <p class="product-card__name">Сир твердий, 300 г</p>
+                <div class="product-card__action">
+                    <button class="product-card__add" type="button">Додати +</button>
+                </div>
+            </article>
+
+            <!-- Картка товару -->
+            <article class="product-card" data-name="Вода негазована, 1.5 л" data-price="24.99">
+                <div class="product-card__image" aria-hidden="true">💧</div>
+                <p class="product-card__price">24.99 грн</p>
+                <p class="product-card__name">Вода негазована, 1.5 л</p>
+                <div class="product-card__action">
+                    <button class="product-card__add" type="button">Додати +</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Секція з вибором стека технологій -->
+    <section class="card">
+        <h2>Обраний стек технологій</h2>
+
+        <p>
+            Для цього прикладу використано WebView-підхід, оскільки застосунок
+            реалізовано за допомогою вебтехнологій і він може запускатися
+            у браузері або бути вбудованим у мобільний застосунок через WebView.
+        </p>
+
+        <table class="tech-table">
+            <thead>
+            <tr>
+                <th>Компонент</th>
+                <th>Технологія</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Структура сторінки</td>
+                <td>HTML</td>
+            </tr>
+            <tr>
+                <td>Оформлення</td>
+                <td>CSS</td>
+            </tr>
+            <tr>
+                <td>Логіка</td>
+                <td>JavaScript</td>
+            </tr>
+            <tr>
+                <td>Платформа запуску</td>
+                <td>Браузер / WebView</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<!-- Футер сторінки -->
+<footer class="footer">
+    <p>Лабораторна робота 1.2: Основи кросплатформності</p>
+</footer>
+
+<!-- Кнопка повернення до початку сторінки -->
+<button id="backToTop" class="back-to-top" type="button" aria-label="Догори">↑</button>
+
+<!-- Підключення JavaScript-файлу -->
+<script src="script.js"></script>
+</body>
+</html>
