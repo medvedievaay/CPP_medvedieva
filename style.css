@@ -7,8 +7,7 @@
     --color-border-input: #c9c7c1;
     --color-surface: #f6f5f2;
     --color-white: #ffffff;
-    --color-accent: #000000;
-    --color-accent-hover: #717171;
+    --color-accent-hover: #ffffff;
 
     --radius-pill: 20px;
     --radius-sm: 10px;
@@ -663,7 +662,6 @@ body.cart-open {
     bottom: 18px;
     width: 44px;
     height: 44px;
-    background-color: var(--color-accent);
     color: var(--color-ink);
     border: none;
     border-radius: 50%;
@@ -671,7 +669,7 @@ body.cart-open {
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
-    box-shadow: 0 6px 16px rgba(245, 130, 31, 0.35);
+    box-shadow: 0 6px 16px rgb(0 0 0);
     opacity: 0;
     visibility: hidden;
     transform: translateY(8px);
