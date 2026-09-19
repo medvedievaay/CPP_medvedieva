@@ -27,9 +27,7 @@
             <a class="topnav__logo" href="#top">August</a>
 
             <div class="nav-extras" id="navExtras">
-                <button class="topnav__catalog" id="catalogButton" type="button">
-                    Всі товари
-                </button>
+                <button class="topnav__catalog" id="catalogButton" type="button"> Всі товари </button>
 
                 <div class="topnav__search">
                     <input type="text" id="searchInput" placeholder="Я шукаю…">
@@ -89,7 +87,6 @@
             <li>Онлайн-замовлення з доставкою або самовивозом</li>
             <li>Програма лояльності та персональні знижки</li>
             <li>Кошик покупок, який завжди під рукою</li>
-            <li>Робота у будь-якому сучасному браузері</li>
         </ul>
     </section>
 
@@ -104,7 +101,7 @@
                 <p class="product-card__price">54.99 грн</p>
                 <p class="product-card__name">Молоко 2.5%, 1 л</p>
                 <div class="product-card__action">
-                    <button class="product-card__add" type="button">Додати +</button>
+                    <button class="product-card__add" type="button">Додати</button>
                 </div>
             </article>
 
@@ -114,7 +111,7 @@
                 <p class="product-card__price">32.50 грн</p>
                 <p class="product-card__name">Хліб пшеничний, 500 г</p>
                 <div class="product-card__action">
-                    <button class="product-card__add" type="button">Додати +</button>
+                    <button class="product-card__add" type="button">Додати</button>
                 </div>
             </article>
 
@@ -124,7 +121,7 @@
                 <p class="product-card__price">68.00 грн</p>
                 <p class="product-card__name">Яйця курячі, 10 шт</p>
                 <div class="product-card__action">
-                    <button class="product-card__add" type="button">Додати +</button>
+                    <button class="product-card__add" type="button">Додати</button>
                 </div>
             </article>
 
@@ -134,7 +131,7 @@
                 <p class="product-card__price">149.99 грн</p>
                 <p class="product-card__name">Кава мелена, 250 г</p>
                 <div class="product-card__action">
-                    <button class="product-card__add" type="button">Додати +</button>
+                    <button class="product-card__add" type="button">Додати</button>
                 </div>
             </article>
 
@@ -144,7 +141,7 @@
                 <p class="product-card__price">119.00 грн</p>
                 <p class="product-card__name">Сир твердий, 300 г</p>
                 <div class="product-card__action">
-                    <button class="product-card__add" type="button">Додати +</button>
+                    <button class="product-card__add" type="button">Додати</button>
                 </div>
             </article>
 
@@ -154,7 +151,7 @@
                 <p class="product-card__price">24.99 грн</p>
                 <p class="product-card__name">Вода негазована, 1.5 л</p>
                 <div class="product-card__action">
-                    <button class="product-card__add" type="button">Додати +</button>
+                    <button class="product-card__add" type="button">Додати</button>
                 </div>
             </article>
         </div>
@@ -180,20 +177,20 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Структура сторінки</td>
-                    <td>HTML</td>
+                    <td class="tech-table__key">Структура сторінки</td>
+                    <td data-label="Технологія">HTML</td>
                 </tr>
                 <tr>
-                    <td>Оформлення</td>
-                    <td>CSS</td>
+                    <td class="tech-table__key">Оформлення</td>
+                    <td data-label="Технологія">CSS</td>
                 </tr>
                 <tr>
-                    <td>Логіка</td>
-                    <td>JavaScript</td>
+                    <td class="tech-table__key">Логіка</td>
+                    <td data-label="Технологія">JavaScript</td>
                 </tr>
                 <tr>
-                    <td>Платформа запуску</td>
-                    <td>Браузер / WebView</td>
+                    <td class="tech-table__key">Платформа запуску</td>
+                    <td data-label="Технологія">Браузер / WebView</td>
                 </tr>
                 </tbody>
             </table>
@@ -208,6 +205,38 @@
 
 <!-- Кнопка повернення до початку сторінки -->
 <button id="backToTop" class="back-to-top" type="button" aria-label="Догори">↑</button>
+
+<!-- Затемнення фону, коли кошик відкрито -->
+<div id="cartOverlay" class="cart-overlay"></div>
+
+<!-- Панель кошика -->
+<aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-drawer__header">
+        <h2>Кошик</h2>
+        <div class="cart-drawer__header-actions">
+            <button id="clearCartButton" class="cart-drawer__clear" type="button"> Очистити </button>
+            <button id="closeCartButton" class="cart-drawer__close" type="button" aria-label="Закрити кошик">✕</button>
+        </div>
+    </div>
+
+    <!-- Сюди JavaScript малює товари, додані в кошик -->
+    <div class="cart-drawer__items" id="cartItems"></div>
+
+    <div class="cart-drawer__summary">
+        <div class="cart-drawer__row">
+            <span>Товари</span>
+            <span id="cartSummaryItems">0 грн</span>
+        </div>
+        <div class="cart-drawer__row cart-drawer__row--total">
+            <span>До оплати</span>
+            <span id="cartSummaryTotal">0 грн</span>
+        </div>
+        <button id="checkoutButton" class="cart-drawer__checkout" type="button">
+            Продовжити
+        </button>
+        <p id="checkoutMessage" class="cart-drawer__checkout-message"></p>
+    </div>
+</aside>
 
 <!-- Підключення JavaScript-файлу -->
 <script src="script.js"></script>
